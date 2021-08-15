@@ -1,0 +1,14 @@
+node_modules
+dist/
+*.js
+*.json
+*.ttf
+*.scss
+*.sass
+*.css
+*.png
+*.mp4
+*.jpg
+*.jpeg
+legal
+*.html

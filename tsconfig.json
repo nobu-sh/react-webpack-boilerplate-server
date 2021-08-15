@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "lib": ["es2020"],
+    "target": "es2020",
+    "strict": true,
+    "esModuleInterop": true,
+    "declaration": false,
+    "removeComments": false,
+    "baseUrl": "."
+  },
+  "include": [
+    "./server/index.ts",
+  ],
+}
