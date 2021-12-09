@@ -1,8 +1,11 @@
-import React, { FC } from 'react'
+import React from 'react'
 
-const Home: FC = () => {
+import "./Home.scss"
+
+const Home: React.FC = () => {
+
   return (
-    <h1>Hello, world!</h1>
+    <h1>Hello World</h1>
   )
 }
 

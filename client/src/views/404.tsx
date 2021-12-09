@@ -1,6 +1,6 @@
-import React, { FC } from 'react'
+import React from 'react'
 
-const  FourOFour: FC = () => {
+const  FourOFour: React.FC = () => {
   return (
     <h1>404</h1>
   )

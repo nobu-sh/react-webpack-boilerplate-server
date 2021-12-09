@@ -1,4 +1,4 @@
-  
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -6,16 +6,16 @@ const CopyPlugin = require('copy-webpack-plugin')
 module.exports = () => ({
   plugins : [
     new HtmlWebpackPlugin({
-      template: './src/base/index.html'
+      template: './src/base/index.html',
     }),
     new CopyPlugin({
       patterns: [
         {
           from: 'public',
           to: '',
-        }
-      ]
-    })
+        },
+      ],
+    }),
   ],
   module: {
     rules: [
@@ -24,7 +24,7 @@ module.exports = () => ({
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-        }
+        },
       },
       {
         test: /\.css$/i,
@@ -43,7 +43,7 @@ module.exports = () => ({
         use: [
           'style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
         ],
       },
       {
@@ -61,24 +61,25 @@ module.exports = () => ({
   },
   resolve: {
     alias: {
-      'css': path.join(__dirname, 'src/css'),
-      'sass': path.join(__dirname, 'src/sass'),
-      'scss': path.join(__dirname, 'src/scss'),
-      'views': path.join(__dirname, 'src/views'),
-      'assets': path.join(__dirname, 'src/assets'),
-      '~mixins': path.join(__dirname, 'src', 'scss', 'mixins')
+      'scss': path.join(__dirname, 'src', 'scss'),
+      'assets': path.join(__dirname, 'src', 'assets'),
+      '~mixins': path.join(__dirname, 'src', 'scss', 'mixins'),
     },
-    extensions: ['*', '.js', '.jsx', '.tsx', '.ts']
+    extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
   },
   entry: {
-    app: path.resolve(__dirname, 'src', 'index.tsx')
+    app: path.resolve(__dirname, 'src', 'index.tsx'),
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
+    chunkFilename: "[name].bundle.js",
   },
+
+  target: "web",
   mode: process.env.NODE_ENV,
-  // devtool: process.env.NODE_ENV === 'production' ? 'none' : 'source-map',
+  devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
+
   devServer: {
     port: Number(process.env.PORT) || 6969,
     host: '0.0.0.0',
@@ -86,5 +87,5 @@ module.exports = () => ({
     proxy: {
       '/api': 'http://localhost:6970',
     },
-  }
+  },
 })

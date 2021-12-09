@@ -3,7 +3,6 @@ import http from 'http'
 import cors from 'cors'
 import path from 'path'
 
-
 const app = express()
 const server = http.createServer(app)
 
